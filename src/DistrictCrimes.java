@@ -11,7 +11,6 @@ public class DistrictCrimes {
         String outputFilename = "CrimesDistrict" + district + ".txt";
         List<String> list = readCSV(district, filename);
         Collections.sort(list);
-        System.out.println(list);
         writeListToFile(list, outputFilename);
     }
 
@@ -19,13 +18,13 @@ public class DistrictCrimes {
         PrintWriter out = null;
         try {
             out = new PrintWriter(new FileWriter(outputFilename));
-            /* for (String line : list) {
+            for (String line : list){
                 out.println(line);
-            } */
-            Iterator<String> it = list.iterator();
+            }
+            /* Iterator<String> it = list.iterator();
             while (it.hasNext()) {
                 out.println(it.next());
-            }
+            }*/
         } finally {
             if (out != null) {
                 out.close();
