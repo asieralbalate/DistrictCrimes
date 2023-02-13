@@ -1,8 +1,7 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.io.Serializable;
+import java.util.*;
 
-public class Pair <K extends Comparable<K>,V > implements Comparable <Pair<K, V>> {
+public class Pair<K extends Comparable<K>, V> implements Comparable<Pair<K, V>>, Serializable {
     private K key;
     private V value;
 
@@ -11,7 +10,7 @@ public class Pair <K extends Comparable<K>,V > implements Comparable <Pair<K, V>
         Pair<String, String> pair2 = new Pair<>("zzzzzz", "world");
         Pair<String, String> pair3 = new Pair<>("gggggg", "world");
         Pair<String, String> pair4 = new Pair<>("kkkkkkk", "world");
-        List<Pair<String,String>> list = new ArrayList<>();
+        List<Pair<String, String>> list = new ArrayList<>();
         list.add(pair1);
         list.add(pair2);
         list.add(pair3);
@@ -27,7 +26,7 @@ public class Pair <K extends Comparable<K>,V > implements Comparable <Pair<K, V>
 
     @Override
     public String toString() {
-        return "{" + key +","+ value + '}';
+        return "{" + key + "," + value + '}';
     }
 
     @Override

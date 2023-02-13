@@ -1,13 +1,10 @@
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class CrimeFreq {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Map<String, Integer> map = readCSV();
-        writeObjects();
+        writeObjects(map);
     }
 
     private static Map<String, Integer> readCSV() throws IOException {
@@ -21,7 +18,7 @@ public class CrimeFreq {
                 String[] items = line.split(",");
                 String crimeDesc = items[5];
                 Integer num = map.get(crimeDesc);
-                map.put(crimeDesc,num == null ? 1 : num + 1);
+                map.put(crimeDesc, num == null ? 1 : num + 1);
             }
             return map;
         } finally {
@@ -34,9 +31,15 @@ public class CrimeFreq {
     private static void writeObjects(Map<String, Integer> map) throws IOException {
         ObjectOutputStream out = null;
         try {
-            out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("Crimes.csv")));
-        }finally{
-            if(out != null) {
+            out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("CrimeFreq.dat")));
+            for (String key : map.keySet()) {
+                Integer value = map.get(key);
+                Pair<String, Integer> pair = new Pair<>(key, value);
+                out.writeObject(pair);
+            }
+
+        } finally {
+            if (out != null) {
                 out.close();
             }
         }

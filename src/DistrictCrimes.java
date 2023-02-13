@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+
 public class DistrictCrimes {
     public static void main(String[] args) throws IOException {
         if (args.length != 1) {
@@ -18,7 +19,7 @@ public class DistrictCrimes {
         PrintWriter out = null;
         try {
             out = new PrintWriter(new FileWriter(outputFilename));
-            for (String line : list){
+            for (String line : list) {
                 out.println(line);
             }
             /* Iterator<String> it = list.iterator();
